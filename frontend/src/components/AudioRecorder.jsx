@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-const AudioRecorder = () => {
+function AudioRecorder() {
   const [recording, setRecording] = useState(false);
   const mediaRecorder = useRef(null);
   const audioChunks = useRef([]);
@@ -36,6 +36,6 @@ const AudioRecorder = () => {
       </button>
     </div>
   );
-};
+}
 
 export default AudioRecorder;
