@@ -11,6 +11,10 @@ app.use(express.json());
 io.on('connection', (socket) => {
   console.log('A user connected');
 
+  socket.on('test_message', (msg) => {
+    console.log('Received:', msg);
+  });
+
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
