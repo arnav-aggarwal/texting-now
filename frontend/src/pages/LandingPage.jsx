@@ -1,5 +1,4 @@
-// LandingPage.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import useStore from '../components/store';
 import AudioRecorder from '../components/AudioRecorder';
 import MessageBox from '../components/MessageBox';
@@ -13,18 +12,18 @@ function LandingPage() {
   const addMessage = useStore(state => state.addMessage);
 
   useEffect(() => {
-    if(!socket) {
+    if (!socket) {
       setSocket(io('http://localhost:4000'));
       return;
     }
 
     socket.emit('message', `${new Date().toLocaleTimeString()}: New user joined`);
 
-    socket.on('previous messages', messages => {
+    socket.on('previous messages', (messages) => {
       setMessages(messages);
     });
 
-    socket.on('chat message', msg => {
+    socket.on('chat message', (msg) => {
       addMessage(msg);
     });
 
@@ -32,23 +31,28 @@ function LandingPage() {
   }, [socket]);
 
   return (
-    <div>
-      <div style={{ marginBottom: '6em' }}>
-        <h1>
-          Chat Log
-        </h1>
-        <ChatLog />
-      </div>
-      <div>
-        <h3>Audio Recorder</h3>
-        <AudioRecorder />
-      </div>
-      <div>
-        <h3>Message Box</h3>
-        <MessageBox />
-      </div>
+    <div style={styles.container}>
+      <h1>Live Chat</h1>
+      <ChatLog />
+      <MessageBox />
+      <AudioRecorder />
     </div>
   );
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: '800px',
+    margin: '0 auto',
+    padding: '20px',
+    backgroundColor: '#1a1a1a',
+    borderRadius: '10px',
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+  },
+};
 
 export default LandingPage;

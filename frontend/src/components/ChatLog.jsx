@@ -1,42 +1,55 @@
-// ChatLog.jsx
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useStore from './store';
 
 function ChatLog() {
   const messages = useStore(state => state.messages).toReversed();
+  const chatEndRef = useRef(null);
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   return (
     <div style={styles.chatContainer}>
-      {messages.toReversed().map((text, index) => (
-        <div key={index} style={styles.messageBubble}>
+      {messages.map((text, index) => (
+        <div
+          key={index}
+          style={{
+            ...styles.messageBubble,
+            alignSelf: index % 2 === 0 ? 'flex-end' : 'flex-start',
+            backgroundColor: index % 2 === 0 ? '#007bff' : '#444',
+          }}
+        >
           {text}
         </div>
       ))}
+      <div ref={chatEndRef} />
     </div>
   );
 }
 
-// ✅ Inline Styles for Simplicity
+// ✅ Updated Styling
 const styles = {
   chatContainer: {
     display: 'flex',
     flexDirection: 'column',
     maxWidth: '600px',
-    margin: '20px auto',
+    width: '100%',
+    height: '400px',
     padding: '15px',
     borderRadius: '10px',
-    // boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    backgroundColor: '#1a1a1a',
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
     overflowY: 'auto',
-    maxHeight: '400px',
+    scrollbarWidth: 'thin',
   },
   messageBubble: {
     padding: '10px 15px',
     margin: '5px 0',
-    backgroundColor: '#007bff',
     color: 'white',
     borderRadius: '15px',
     maxWidth: '75%',
-    alignSelf: 'flex-start',
+    wordWrap: 'break-word',
   },
 };
 
