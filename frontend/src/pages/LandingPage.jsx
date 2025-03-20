@@ -9,6 +9,7 @@ function LandingPage() {
   const setMessages = useStore(state => state.setMessages);
   const socket = useStore(state => state.socket);
   const setSocket = useStore(state => state.setSocket);
+  const addMessage = useStore(state => state.addMessage);
 
   useEffect(() => {
     if(!socket) {
@@ -23,7 +24,7 @@ function LandingPage() {
     });
 
     socket.on('chat message', msg => {
-      setMessages(msg);
+      addMessage(msg);
     });
 
     return () => socket.disconnect();

@@ -1,16 +1,19 @@
 import { create } from 'zustand';
 
-const useStore = create(set => ({
+const useStore = create((set, get) => ({
   socket: null,
   setSocket: socket => set({ socket }),
   messages: [],
-  setMessages: newMessage => {
-    if (typeof newMessage === 'string') {
-      set(state => ({ messages: [...state.messages, newMessage] }))
-    } else {
-      set(state => ({ messages: newMessage }));
-    }
+
+  addMessage: newMessage => {
+    set(state => ({ messages: [...state.messages, newMessage] }));
   },
+  sendMessage: newMessage => {
+    get().socket.emit('message', newMessage);
+  },
+  setMessages: messages => {
+    set(() => ({ messages }))
+  }
 }));
 
 export default useStore;

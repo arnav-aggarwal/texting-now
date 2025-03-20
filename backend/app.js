@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
   socket.on('message', (msg) => {
     previousMessages.push(msg);
     if(previousMessages.length >= 10) {
-      previousMessages = previousMessages.slice(0, 9);
+      previousMessages = previousMessages.slice(1);
     }
     io.emit('chat message', msg);
   })
