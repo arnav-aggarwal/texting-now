@@ -1,3 +1,4 @@
+// ChatLog.jsx
 import React, { useState, useRef } from 'react';
 import useStore from './store';
 

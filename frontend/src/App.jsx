@@ -1,3 +1,4 @@
+// App.jsx
 import LandingPage from './pages/LandingPage';
 import './App.css'
 

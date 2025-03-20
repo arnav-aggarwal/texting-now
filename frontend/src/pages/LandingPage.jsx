@@ -1,3 +1,4 @@
+// LandingPage.jsx
 import React, { useEffect, useState } from 'react';
 import useStore from '../components/store';
 import AudioRecorder from '../components/AudioRecorder';
