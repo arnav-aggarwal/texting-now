@@ -8,11 +8,12 @@ function LandingPage() {
 
   useEffect(() => {
     const socket = io('http://localhost:4000');
-    socket.emit('test_message', 'Hello server!');
     socket.emit('message', `${new Date().toLocaleTimeString()}: New user joined`);
+
     socket.on('previous messages', messages => {
       setMessages(messages);
     });
+
     socket.on('chat message', msg => {
       setMessages(oldMessages => [...oldMessages, msg]);
     });
