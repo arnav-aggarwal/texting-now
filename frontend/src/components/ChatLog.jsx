@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
+import useStore from './store';
 
-function ChatLog({ messages = ['Test first message', 'Test second message'] }) {
-  const reversed = messages.toReversed();
+function ChatLog() {
+  const messages = useStore(state => state.messages).toReversed();
 
   return (
     <div>{
-      reversed.map(text => (
+      messages.toReversed().map(text => (
         <div key={text}>
           {text}
         </div>
