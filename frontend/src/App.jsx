@@ -1,13 +1,11 @@
 // App.jsx
 import LandingPage from './pages/LandingPage';
-import './App.css'
+// import './App.css'
 
 function App() {
   return (
     <>
-      <div className="card">
-        <LandingPage />
-      </div>
+      <LandingPage />
     </>
   )
 }

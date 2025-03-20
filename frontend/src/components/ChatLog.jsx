@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import useStore from './store';
 
 function ChatLog() {
-  const messages = useStore(state => state.messages).toReversed();
+  const messages = useStore(state => state.messages);
   const chatEndRef = useRef(null);
 
   useEffect(() => {
@@ -10,15 +10,13 @@ function ChatLog() {
   }, [messages]);
 
   return (
-    <div style={styles.chatContainer}>
+<div className="flex flex-col w-full max-w-3xl h-[400px] p-4 bg-gray-800 rounded-lg overflow-y-auto">
       {messages.map((text, index) => (
         <div
           key={index}
-          style={{
-            ...styles.messageBubble,
-            alignSelf: index % 2 === 0 ? 'flex-end' : 'flex-start',
-            backgroundColor: index % 2 === 0 ? '#007bff' : '#444',
-          }}
+          className={`p-3 my-1 rounded-lg max-w-[75%] text-white ${
+            index % 2 === 0 ? 'bg-blue-500 self-end' : 'bg-gray-600 self-start'
+          }`}
         >
           {text}
         </div>
@@ -27,30 +25,5 @@ function ChatLog() {
     </div>
   );
 }
-
-// ✅ Updated Styling
-const styles = {
-  chatContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    maxWidth: '600px',
-    width: '100%',
-    height: '400px',
-    padding: '15px',
-    borderRadius: '10px',
-    backgroundColor: '#1a1a1a',
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
-    overflowY: 'auto',
-    scrollbarWidth: 'thin',
-  },
-  messageBubble: {
-    padding: '10px 15px',
-    margin: '5px 0',
-    color: 'white',
-    borderRadius: '15px',
-    maxWidth: '75%',
-    wordWrap: 'break-word',
-  },
-};
 
 export default ChatLog;

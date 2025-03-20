@@ -31,28 +31,15 @@ function LandingPage() {
   }, [socket]);
 
   return (
-    <div style={styles.container}>
-      <h1>Live Chat</h1>
+    <div className="flex flex-col items-center justify-center h-screen w-screen bg-gray-900 text-white">
+    <div className="flex flex-col items-center justify-between h-full w-full max-w-4xl p-6">
+      <h1 className="text-3xl font-semibold mb-4">Live Chat</h1>
       <ChatLog />
       <MessageBox />
       <AudioRecorder />
     </div>
+  </div>
   );
 }
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '20px',
-    backgroundColor: '#1a1a1a',
-    borderRadius: '10px',
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
-  },
-};
 
 export default LandingPage;
