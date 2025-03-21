@@ -7,7 +7,9 @@ const server = require('http').createServer(app);
 const socketIO = require('socket.io');
 
 const allowedOrigins = [
+  'http://10.0.0.96:5173',                         // local dev
   'http://localhost:5173',                         // local dev
+  'http://10.0.0.96:4173',                         // local production build
   'http://localhost:4173',                         // local production build
   'https://voice-drop.vercel.app'                  // deployed frontend
 ];
