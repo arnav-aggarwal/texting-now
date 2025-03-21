@@ -12,7 +12,7 @@ function LandingPage() {
 
   useEffect(() => {
     if (!socket) {
-      const newSocket = io('http://localhost:4000', { reconnection: false });
+      const newSocket = io(import.meta.env.VITE_SERVER_URL, { reconnection: false });
       setSocket(newSocket);
       return;
     }
