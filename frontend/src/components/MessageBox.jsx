@@ -16,12 +16,19 @@ function MessageBox() {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   return (
     <div className="flex items-center w-full max-w-3xl p-3 bg-gray-900 rounded-lg">
       <input
         type="text"
         value={inputValue}
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
         className="flex-grow p-3 rounded-l-lg border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-blue-500 outline-none placeholder-gray-400"
         placeholder="Type your message..."
       />
