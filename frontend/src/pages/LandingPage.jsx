@@ -12,7 +12,8 @@ function LandingPage() {
 
   useEffect(() => {
     if (!socket) {
-      setSocket(io('http://localhost:4000'));
+      const newSocket = io('http://localhost:4000', { reconnection: false });
+      setSocket(newSocket);
       return;
     }
 
