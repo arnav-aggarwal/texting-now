@@ -30,8 +30,13 @@ function AudioRecorder() {
   };
 
   return (
-    <div>
-      <button onClick={recording ? stopRecording : startRecording}>
+    <div className="flex flex-col items-center space-y-4 p-4 bg-gray-900 text-white rounded-lg w-full max-w-md mx-auto">
+      <h2 className="text-lg font-semibold">Audio Recorder</h2>
+      <button
+        onClick={recording ? stopRecording : startRecording}
+        className={`px-6 py-3 text-white font-semibold rounded-lg transition-all duration-300
+          ${recording ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'}`}
+      >
         {recording ? 'Stop Recording' : 'Start Recording'}
       </button>
     </div>
