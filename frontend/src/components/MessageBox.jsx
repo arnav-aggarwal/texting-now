@@ -11,7 +11,7 @@ function MessageBox() {
 
   const handleSubmit = () => {
     if (inputValue.trim() !== '') {
-      sendMessage(`${new Date().toLocaleTimeString()}: ${inputValue}`);
+      sendMessage(inputValue);
       setInputValue('');
     }
   };

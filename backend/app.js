@@ -9,21 +9,36 @@ const io = require('socket.io')(server, { cors: { origin: '*' }});
 app.use(cors());
 app.use(express.json());
 
-let previousMessages = [];
+const users = new Set();
 
 io.on('connection', (socket) => {
-  socket.emit('previous messages', previousMessages);
+  let userName = null;
 
-  socket.on('message', (msg) => {
-    previousMessages.push(msg);
-    if(previousMessages.length >= 10) {
-      previousMessages = previousMessages.slice(1);
-    }
-    io.emit('chat message', msg);
-  })
+  socket.on('user joined', (name) => {
+    userName = name;
+    users.add(name);
+    io.emit('server message', {
+      text: `${name} joined the chat.`,
+      sender: 'System',
+      color: '#888',
+      timestamp: new Date().toLocaleTimeString(),
+    });
+  });
+
+  socket.on('client message', (msg) => {
+    io.emit('server message', msg);
+  });
 
   socket.on('disconnect', () => {
-    console.log('User disconnected');
+    if (userName) {
+      users.delete(userName);
+      io.emit('server message', {
+        text: `${userName} disconnected.`,
+        sender: 'System',
+        color: '#888',
+        timestamp: new Date().toLocaleTimeString(),
+      });
+    }
   });
 });
 
