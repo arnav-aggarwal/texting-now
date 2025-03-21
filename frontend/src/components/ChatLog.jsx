@@ -21,7 +21,10 @@ function ChatLog() {
             className={`p-3 my-1 rounded-lg max-w-[75%] ${
               isCurrentUser ? 'self-end' : 'self-start'
             }`}
-            style={{ backgroundColor: msg.color }}
+            style={{
+              backgroundColor: msg.color,
+              wordBreak: 'break-word'
+            }}
           >
             <div className="text-xs opacity-80 mb-1">
               {isCurrentUser ? 'You' : msg.sender} • {msg.timestamp}
