@@ -3,6 +3,7 @@ import useStore from '../components/store';
 import MessageBox from '../components/MessageBox';
 import ChatLog from '../components/ChatLog';
 import UserName from '../components/UserName';
+import LiveUserList from '../components/LiveUserList';
 import { io } from 'socket.io-client';
 
 function LandingPage() {
@@ -10,6 +11,7 @@ function LandingPage() {
   const setSocket = useStore(state => state.setSocket);
   const addMessage = useStore(state => state.addMessage);
   const userName = useStore(state => state.userName);
+  const setLiveUsers = useStore(state => state.setLiveUsers);
 
   useEffect(() => {
     if (!socket) {
@@ -22,6 +24,7 @@ function LandingPage() {
     socket.on('server message', (msg) => {
       addMessage(msg);
     });
+    socket.on('live users', userList => setLiveUsers(userList));
 
     return () => {
       socket.disconnect();
@@ -35,6 +38,8 @@ function LandingPage() {
         You are logged in as <UserName />
       </div>
 
+      <LiveUserList />
+
       {/* Chat Log */}
       <div className="flex-1 w-full max-w-4xl mx-auto bg-gray-800 rounded-lg shadow-lg p-3 sm:p-4 overflow-y-auto">
         <ChatLog />
@@ -45,9 +50,7 @@ function LandingPage() {
         <MessageBox />
       </div>
     </div>
-
   );
-
 }
 
 export default LandingPage;

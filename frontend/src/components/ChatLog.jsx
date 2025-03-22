@@ -15,8 +15,6 @@ function ChatLog() {
     <div className="flex flex-col flex-grow overflow-y-auto custom-scrollbar">
       {messages.map((msg, index) => {
         const isCurrentUser = msg.sender === currentUser;
-        const isSystem = msg.sender === 'System';
-        const bubbleColor = isSystem ? '#4B5563' : colorFromName(msg.sender); // gray-600 fallback
 
         return (
           <div
@@ -25,14 +23,14 @@ function ChatLog() {
               isCurrentUser ? 'self-end' : 'self-start'
             }`}
             style={{
-              backgroundColor: bubbleColor,
+              backgroundColor: colorFromName(msg.sender),
               wordBreak: 'break-word'
             }}
           >
             <div className="text-xs opacity-80 mb-1">
               {isCurrentUser ? 'You' : msg.sender} • {msg.timestamp}
             </div>
-            <div className={`text-white ${isSystem ? 'italic text-gray-300' : ''}`}>{msg.text}</div>
+            <div className="text-white">{msg.text}</div>
           </div>
         );
       })}

@@ -23,6 +23,8 @@ const useStore = create((set, get) => {
       };
       socket.emit('client message', message);
     },
+    liveUsers: [],
+    setLiveUsers: userList => set({ liveUsers: userList }),
   };
 });
 
