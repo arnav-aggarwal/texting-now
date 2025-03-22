@@ -13,7 +13,7 @@ function LandingPage() {
 
   useEffect(() => {
     if (!socket) {
-      const newSocket = io(import.meta.env.VITE_SERVER_URL, { reconnection: false });
+      const newSocket = io(import.meta.env.VITE_SERVER_URL);
       setSocket(newSocket);
       return;
     }
