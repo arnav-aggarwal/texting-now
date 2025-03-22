@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import useStore from '../components/store';
 import MessageBox from '../components/MessageBox';
 import ChatLog from '../components/ChatLog';
+import UserName from '../components/UserName';
 import { io } from 'socket.io-client';
 
 function LandingPage() {
@@ -31,7 +32,7 @@ function LandingPage() {
     <div className="h-[100dvh] w-screen flex flex-col bg-gray-900 text-white px-2 sm:px-4 md:px-6 py-4">
       {/* Header */}
       <div className="shrink-0 text-gray-400 text-center text-sm sm:text-base mb-2 w-full px-2">
-        You are logged in as <span className="font-bold text-white">{userName}</span>
+        You are logged in as <UserName />
       </div>
 
       {/* Chat Log */}

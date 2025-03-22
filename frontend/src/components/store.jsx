@@ -11,6 +11,7 @@ const useStore = create((set, get) => {
     setSocket: (socket) => set({ socket }),
     messages: [],
     userName,
+    setUserName: newName => set({ userName: newName }),
     userColor: randomColor,
     addMessage: (message) => set((state) => ({
       messages: [...state.messages, message],
