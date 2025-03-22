@@ -2,14 +2,15 @@
 import { create } from 'zustand';
 
 const useStore = create((set, get) => {
-  const randomName = `User${Math.floor(Math.random() * 1000)}`;
   const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`;
+  const userName = localStorage.getItem('userName') || `user-${Math.floor(Math.random() * 1000)}`;
+  localStorage.setItem('userName', userName);
 
   return {
     socket: null,
     setSocket: (socket) => set({ socket }),
     messages: [],
-    userName: randomName,
+    userName,
     userColor: randomColor,
     addMessage: (message) => set((state) => ({
       messages: [...state.messages, message],
