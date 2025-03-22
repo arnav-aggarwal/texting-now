@@ -28,15 +28,15 @@ function UserName() {
       onChange={e => setValue(e.target.value)}
       onBlur={handleSubmit}
       onKeyDown={e => e.key === 'Enter' && handleSubmit()}
-      className="bg-gray-800 text-white px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+      className="bg-gray-800 text-white px-2 py-1 rounded border border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
   ) : (
     <span
       onClick={() => setEditing(true)}
-      className="font-bold text-white underline cursor-pointer hover:text-blue-400"
+      className="inline-block font-bold text-white px-2 py-1 rounded cursor-pointer hover:bg-gray-700 hover:text-blue-400 transition-colors duration-200"
       title="Click to change your name"
     >
-      {userName}
+      ✎ {userName}
     </span>
   );
 }
