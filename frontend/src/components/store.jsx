@@ -1,10 +1,11 @@
 // store.jsx
 import { create } from 'zustand';
+import { colorFromName } from '../utils';
 
 const useStore = create((set, get) => {
-  const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 70%, 60%)`;
   const userName = localStorage.getItem('userName') || `user-${Math.floor(Math.random() * 1000)}`;
   localStorage.setItem('userName', userName);
+  const userColor = colorFromName(userName);
 
   return {
     socket: null,
@@ -12,7 +13,7 @@ const useStore = create((set, get) => {
     messages: [],
     userName,
     setUserName: newName => set({ userName: newName }),
-    userColor: randomColor,
+    userColor,
     addMessage: (message) => set((state) => ({
       messages: [...state.messages, message],
     })),
