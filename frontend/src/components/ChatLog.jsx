@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import useStore from './store';
+import { colorFromName } from '../utils';
 
 function ChatLog() {
   const messages = useStore((state) => state.messages);
@@ -22,7 +23,7 @@ function ChatLog() {
               isCurrentUser ? 'self-end' : 'self-start'
             }`}
             style={{
-              backgroundColor: msg.color,
+              backgroundColor: colorFromName(msg.sender),
               wordBreak: 'break-word'
             }}
           >
