@@ -52,6 +52,11 @@ io.on('connection', (socket) => {
   let userName = null;
 
   socket.on('user joined', (name) => {
+    const oldUserName = userName;
+    if(oldUserName) {
+      users.delete(oldUserName);
+    }
+
     userName = name;
     users.add(name);
     userSockets.set(socket.id, name);
