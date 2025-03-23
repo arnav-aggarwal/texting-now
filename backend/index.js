@@ -9,7 +9,7 @@ const socketIO = require('socket.io');
 const allowedOrigins = [
   'http://localhost:5173',                         // local dev
   'http://localhost:4173',                         // local production build
-  'https://voice-drop.vercel.app'                  // deployed frontend
+  'https://texting-now.vercel.app'                 // deployed frontend
 ];
 
 app.use(cors({
