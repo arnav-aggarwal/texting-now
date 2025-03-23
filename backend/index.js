@@ -64,7 +64,10 @@ io.on('connection', (socket) => {
   });
 
   socket.on('client message', (msg) => {
-    io.emit('live users', Array.from(users));
+    if(!users.has(msg.sender)) {
+      users.add(msg.sender);
+      io.emit('live users', Array.from(users));
+    }
     io.emit('server message', msg);
   });
 
