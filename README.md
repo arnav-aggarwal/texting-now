@@ -2,8 +2,8 @@
 
 ## Live Demo
 
-[Live App](https://texting-now.vercel.app)
-[GitHub Repository](https://github.com/arnav-aggarwal/texting-now)
+- [Live App](https://texting-now.vercel.app)
+- [GitHub Repository](https://github.com/arnav-aggarwal/texting-now)
 
 **TextingNow** is a lightweight real-time chat application built with a modern web stack. It supports live messaging and user presence in a minimal, responsive interface. The project was built to demonstrate full-stack engineering proficiency, with an emphasis on clean design, performance, and functionality.
 
