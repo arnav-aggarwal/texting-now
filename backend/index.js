@@ -64,6 +64,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('client message', (msg) => {
+    io.emit('live users', Array.from(users));
     io.emit('server message', msg);
   });
 
