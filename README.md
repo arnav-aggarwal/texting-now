@@ -1,65 +1,47 @@
-# voice-drop
+# TextingNow
 
-# VoiceDrop – Real-Time Audio & Text Messaging App
+## Live Demo
 
-VoiceDrop is an engaging, real-time web application enabling users to connect through short audio and text messages organized into themed virtual "rooms." Inspired by modern communication platforms and built to demonstrate modern web technologies, VoiceDrop seamlessly combines real-time messaging, audio recording, responsive UI, and push notifications.
+[Live App](https://texting-now.vercel.app)
+[GitHub Repository](https://github.com/arnav-aggarwal/texting-now)
 
----
-
-## Project Motivation
-VoiceDrop is designed specifically to showcase expertise in real-time web communication, modern React frontends, intuitive UX design, audio messaging, and robust software engineering principles.
-
----
+**TextingNow** is a lightweight real-time chat application built with a modern web stack. It supports live messaging and user presence in a minimal, responsive interface. The project was built to demonstrate full-stack engineering proficiency, with an emphasis on clean design, performance, and functionality.
 
 ## Features
 
-### Audio & Text Messaging
-- Users easily record short audio clips directly from their browsers.
-- Messages ("drops") appear instantly to all participants in real-time.
-- Choose between audio or text messages to best express yourself.
+- Real-time text messaging using WebSockets (Socket.IO)
+- Live user presence display
+- Editable usernames with persistent identity and color
+- Responsive, mobile-friendly UI
+- Deployed frontend (React + Vite + Tailwind) and backend (Express + Socket.IO)
 
-### Virtual Themed Rooms
-- Join conversations in thematic virtual spaces, like:
-  - "Pet Owners"
-  - "Developer Lounge"
-  - "Music Makers"
-- Real-time user presence indicators (who’s in the room).
+## Tech Stack
 
-### Real-Time Notifications
-- Browser and desktop notifications inform users instantly of new audio and text messages.
+- **Frontend:** React, Vite, Zustand, Tailwind CSS, Socket.IO Client
+- **Backend:** Node.js, Express, Socket.IO
+- **Deployment:** Vercel (frontend), Render (backend)
 
-### Responsive, Interactive UI
-- Clean, modern, and intuitive user interface optimized for both desktop and mobile devices.
+## Running Locally
 
-### Error Handling & Offline Support
-- Graceful handling of network issues and disconnections.
-- Limited offline capability ensures a resilient user experience.
+### Backend
+1. Navigate to `backend/`
+2. Install dependencies: ```npm install```
+3. Start the server: ```npm start```
+(Runs on port `4000` by default)
 
----
+### Frontend
+1. Navigate to `frontend/`
+2. Install dependencies: ```npm install```
+3. Set your environment variable in a `.env` file: ```VITE_SERVER_URL=http://localhost:4000```
+4. Start the development server: ```npm run dev```
 
-## Technologies Used
-- **Frontend:** React (Hooks, Zustand), React Router, HTML5 Notification API, Tailwind CSS
-- **Backend:** Node.js, Express, Socket.io, Web Audio API
-- **Testing & Quality:** Jest, React Testing Library
-- **Deployment:** Frontend (Vercel/Netlify), Backend (Heroku/Render)
+## Purpose
 
----
+This application was created as a demonstration of:
 
-## How the App Will Look
-VoiceDrop offers users an elegant, modern, and minimalistic interface:
+- Full-stack development using modern technologies
+- Real-time communication using WebSockets
+- Clean, accessible user interface design
+- Deployment and environment configuration for production
 
-- **Landing Page:**
-  - A welcoming screen displaying available virtual rooms.
-  - Easy-to-use room selection interface.
-
-- **Room Interface:**
-  - A central feed displaying audio and text messages.
-  - Audio messages feature playback controls.
-  - Text messages are neatly formatted, with clear timestamps and usernames.
-
-- **Recording Interface:**
-  - Simple controls to start/stop audio recording.
-  - Immediate playback and sending options.
-
-- **Notifications:**
-  - Discreet, intuitive pop-ups and browser notifications alerting users to new interactions.
+The codebase is intentionally minimal, with a focus on core functionality and clarity.
