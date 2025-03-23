@@ -34,6 +34,7 @@
 2. Install dependencies: ```npm install```
 3. Set your environment variable in a `.env` file: ```VITE_SERVER_URL=http://localhost:4000```
 4. Start the development server: ```npm run dev```
+5. Head to [localhost:5173](http://localhost:5173)
 
 ## Purpose
 
